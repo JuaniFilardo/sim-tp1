@@ -41,7 +41,8 @@ public abstract class Generador {
      */
     public void setX0(int n) {
         if (n > 0 ){
-            this.x0 = n;    
+            this.x0 = n;
+            
         }
     }
 
