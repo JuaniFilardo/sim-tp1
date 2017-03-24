@@ -131,7 +131,9 @@ public class EjercicioB extends javax.swing.JFrame {
             System.out.println("Campos verificados.");
             
             // método temporal para mostrar los números
-            mostrarNumeros(generarNumeros());
+            double [] n = generarNumeros();
+            mostrarNumeros(n);
+            System.out.println(imprimirArreglo(contarFrecuenciaEnIntervalos(n,Integer.parseInt(this.txt_intervalos.getText()))));
             
         } else {
             System.out.println("Ocurrió un error");
@@ -247,4 +249,57 @@ public class EjercicioB extends javax.swing.JFrame {
         }
         return s;
     }
+    
+    /**
+     * Sobrecarga para permitir leer el array de int
+     * @param num
+     * @return 
+     */
+    private String imprimirArreglo(int[] num) {
+    
+        String s = "";
+        
+        for (int i = 0; i < num.length; i++) {
+            s += String.valueOf(num[i]) + " - ";
+        }
+        return s;
+    }
+    
+    /**
+     * Si alguno encuentra una forma mejor, ¯\_(ツ)_/¯
+     * Cuenta la frecuencia en la que aparecen números en cada intervalo.
+     *
+     * @param num - el array de números aleatorios
+     * @param intervalos - la cantidad de intervalos en los que se dividen
+     * @return 
+     */
+    
+    private int[] contarFrecuenciaEnIntervalos(double[] num, int intervalos) {
+      
+        int [] cont = new int [intervalos];
+        // marca el límite para el primer casillero
+        double limiteFijo = (double)1/intervalos;
+        
+        // recorro todos los números aleatorios
+        for (int i = 0; i < num.length; i++) {
+        
+            double limiteVar = limiteFijo;
+            int foo = 1; // multiplicador del límite
+            int casillero = 0; // intervalo al que corresponde
+         
+            // mientras no corresponda a ese intervalo
+            while (num[i] > limiteVar) {
+                foo++;
+                limiteVar = limiteFijo * foo; // e.g. si hay 10 intervalos crece como 0.1, 0.2, etc.
+                casillero++;
+                System.out.println(num[i]);
+                System.out.println(limiteVar);
+            }
+            // pero si entra en ese intervalo,
+            cont[casillero]++;
+        }
+        
+        return cont;
+    }
+    
 }
