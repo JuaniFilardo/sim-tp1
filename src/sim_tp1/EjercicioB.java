@@ -18,6 +18,8 @@ public class EjercicioB extends javax.swing.JFrame {
      */
     public EjercicioB() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(2);
     }
 
     /**

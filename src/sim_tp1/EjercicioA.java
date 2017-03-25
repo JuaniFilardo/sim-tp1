@@ -15,17 +15,18 @@ import sim_tp1.Generador.GeneradorCongruencialMultiplicativo;
  *
  * @author feder
  */
-public class Principal extends javax.swing.JFrame {
+public class EjercicioA extends javax.swing.JFrame {
 
     Generador generador;
     /**
      * Creates new form principal
      */
-    public Principal() {
+    public EjercicioA() {
         initComponents();
         this.btn_siguiente.setEnabled(false);
         limpiarTabla();
-        this.setDefaultCloseOperation(3);
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(2);
         
 
     }
@@ -550,21 +551,23 @@ public class Principal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EjercicioA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EjercicioA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EjercicioA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EjercicioA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Principal().setVisible(true);
+                new EjercicioA().setVisible(true);
             }
         });
     }

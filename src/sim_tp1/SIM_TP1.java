@@ -10,9 +10,8 @@ public class SIM_TP1 {
     
     public static void main(String[] args) {
     
-        Principal principal = new Principal();
+        Menu principal = new Menu();
         
-        principal.setLocationRelativeTo(null);
         
         principal.setVisible(true);
         
