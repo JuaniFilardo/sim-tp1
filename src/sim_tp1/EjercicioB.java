@@ -134,8 +134,10 @@ public class EjercicioB extends javax.swing.JFrame {
             
             // método temporal para mostrar los números
             double [] n = generarNumeros();
-            mostrarNumeros(n);
-            System.out.println(imprimirArreglo(contarFrecuenciaEnIntervalos(n,Integer.parseInt(this.txt_intervalos.getText()))));
+            //mostrarNumeros(n);
+            //System.out.println(imprimirArreglo(contarFrecuenciaEnIntervalos(n,Integer.parseInt(this.txt_intervalos.getText()))));
+            String s = imprimirArreglo(contarFrecuenciaEnIntervalos(n,Integer.parseInt(this.txt_intervalos.getText())));
+            this.display.setText("Cantidad de números en cada intervalo: " + s);
             
         } else {
             System.out.println("Ocurrió un error");
@@ -249,7 +251,8 @@ public class EjercicioB extends javax.swing.JFrame {
         for (int i = 0; i < num.length; i++) {
             s += String.valueOf(num[i]) + " - ";
         }
-        return s;
+        
+        return s.substring(0, s.length()-3);
     }
     
     /**
@@ -259,12 +262,12 @@ public class EjercicioB extends javax.swing.JFrame {
      */
     private String imprimirArreglo(int[] num) {
     
-        String s = "";
+        String s = "{ ";
         
         for (int i = 0; i < num.length; i++) {
             s += String.valueOf(num[i]) + " - ";
         }
-        return s;
+        return s.substring(0, s.length()-3) + " }";
     }
     
     /**
@@ -294,8 +297,6 @@ public class EjercicioB extends javax.swing.JFrame {
                 foo++;
                 limiteVar = limiteFijo * foo; // e.g. si hay 10 intervalos crece como 0.1, 0.2, etc.
                 casillero++;
-                System.out.println(num[i]);
-                System.out.println(limiteVar);
             }
             // pero si entra en ese intervalo,
             cont[casillero]++;
