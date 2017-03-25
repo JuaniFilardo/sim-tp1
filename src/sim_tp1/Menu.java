@@ -39,6 +39,11 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Menú"));
 
         jButton2.setText("Ejercicio C");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Ejercicio A");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -104,6 +109,12 @@ public class Menu extends javax.swing.JFrame {
         EjercicioB eb = new EjercicioB();
         eb.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        EjercicioC ec = new EjercicioC();
+        ec.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
