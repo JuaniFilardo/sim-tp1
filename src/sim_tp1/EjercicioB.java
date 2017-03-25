@@ -42,7 +42,7 @@ public class EjercicioB extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Prueba de Frecuencias"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Prueba de Frecuencias con Generador de Java"));
 
         lbl_cantidad.setText("Cantidad:");
 
