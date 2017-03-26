@@ -27,8 +27,6 @@ public class EjercicioA extends javax.swing.JFrame {
         limpiarTabla();
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(2);
-        
-
     }
 
     /**
@@ -472,8 +470,6 @@ public class EjercicioA extends javax.swing.JFrame {
          double rnd = generador.calcularSiguiente();
          int xi = generador.getXi();
          tm.addRow(new Object[]{tm.getRowCount(),xi,rnd});
-         
-            
     }//GEN-LAST:event_btn_siguienteActionPerformed
 
     private void limpiarTabla(){

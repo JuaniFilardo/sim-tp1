@@ -137,7 +137,7 @@ public class EjercicioB extends javax.swing.JFrame {
             //mostrarNumeros(n);
             //System.out.println(imprimirArreglo(contarFrecuenciaEnIntervalos(n,Integer.parseInt(this.txt_intervalos.getText()))));
             String s = imprimirArreglo(contarFrecuenciaEnIntervalos(n,Integer.parseInt(this.txt_intervalos.getText())));
-            this.display.setText("Cantidad de números en cada intervalo: " + s);
+            this.display.setText("Cantidad de números en cada intervalo: \n" + s);
             
         } else {
             System.out.println("Ocurrió un error");
@@ -249,10 +249,10 @@ public class EjercicioB extends javax.swing.JFrame {
         String s = "";
         
         for (int i = 0; i < num.length; i++) {
-            s += String.valueOf(num[i]) + " - ";
+            s += String.valueOf(num[i]) + ", ";
         }
         
-        return s.substring(0, s.length()-3);
+        return s.substring(0, s.length()-2);
     }
     
     /**
@@ -265,9 +265,9 @@ public class EjercicioB extends javax.swing.JFrame {
         String s = "{ ";
         
         for (int i = 0; i < num.length; i++) {
-            s += String.valueOf(num[i]) + " - ";
+            s += String.valueOf(num[i]) + ", ";
         }
-        return s.substring(0, s.length()-3) + " }";
+        return s.substring(0, s.length()-2) + " }";
     }
     
     /**
