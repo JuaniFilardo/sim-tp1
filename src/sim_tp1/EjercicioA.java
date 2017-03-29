@@ -5,7 +5,10 @@
  */
 package sim_tp1;
 
+import java.awt.Rectangle;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import sim_tp1.Generador.Generador;
 import sim_tp1.Generador.GeneradorCongruencialLineal;
@@ -470,6 +473,16 @@ public class EjercicioA extends javax.swing.JFrame {
          double rnd = generador.calcularSiguiente();
          int xi = generador.getXi();
          tm.addRow(new Object[]{tm.getRowCount(),xi,rnd});
+         
+        /*
+         Rectangle rect = new Rectangle();
+         rect = table_numeros.getCellRect(tm.getRowCount()-1,0,true);
+        
+         
+         JTable jtable = new JTable(tm);
+         JScrollPane jscroll = new JScrollPane(jtable);
+         jscroll.setAutoscrolls(true);
+         */
     }//GEN-LAST:event_btn_siguienteActionPerformed
 
     private void limpiarTabla(){
