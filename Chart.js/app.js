@@ -10,7 +10,8 @@ function graficar () {
         } catch(e) {
             alert("Formato incorrecto. Ingrese los números separados por comas.");
         }
-		// grafica el primer gráfico, con los valores pasamos por parámetro
+		// hace el gráfico con los valores ingresados por el usuario
+        // este gráfico aparece abajo del otro
         showBarChart(datos,$("#canvasBarChart"));
 
 		// vector del mismo tamaño que el de datos, pero contendrá
@@ -20,13 +21,13 @@ function graficar () {
 		// tendrá el número 10
 
 		var datosReferencia = datos;
-		
+
 		// contador, almacenará la sumatoria de las frecuencias
 		var cont = 0;
-		
+
 		// hago la sumatoria
 		for (var i = 0; i < datos.length; i++) {
-			cont += datos[i];		
+			cont += datos[i];
 		}
 		// el valor ideal sería
 		var valorIdeal = cont/datos.length;
@@ -35,7 +36,7 @@ function graficar () {
 			datosReferencia[j] = valorIdeal;
 		}
 
-		// grafica el segundo gráfico, que tiene los valores ideales
+		// hace el gráfico que tiene los valores ideales
 		showBarChart(datosReferencia,$("#canvasBarChartReferencia"));
     }
     return undefined;
