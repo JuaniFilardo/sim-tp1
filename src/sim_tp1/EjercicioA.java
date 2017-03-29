@@ -94,6 +94,12 @@ public class EjercicioA extends javax.swing.JFrame {
             }
         });
 
+        txt_x0.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_x0FocusLost(evt);
+            }
+        });
+
         jLabel6.setText("k:");
 
         jLabel7.setText("g:");
@@ -137,14 +143,14 @@ public class EjercicioA extends javax.swing.JFrame {
             }
         });
         txt_a.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_aKeyTyped(evt);
+            }
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_aKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txt_aKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_aKeyTyped(evt);
             }
         });
 
@@ -174,15 +180,17 @@ public class EjercicioA extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel4))))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(combo_generador, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
+                        .addComponent(combo_generador, 0, 374, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 22, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txt_a, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -194,8 +202,8 @@ public class EjercicioA extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(txt_x0, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txt_m, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                                        .addComponent(txt_c)))
+                                        .addComponent(txt_m)
+                                        .addComponent(txt_c, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
@@ -210,9 +218,7 @@ public class EjercicioA extends javax.swing.JFrame {
                                                 .addComponent(txt_cant, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addGap(126, 126, 126)
-                                        .addComponent(btn_calcular, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(17, 17, 17)))
-                .addContainerGap())
+                                        .addComponent(btn_calcular, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,6 +321,8 @@ public class EjercicioA extends javax.swing.JFrame {
         else if (this.combo_generador.getSelectedItem().equals("Congruencial Multiplicativo")){
             this.txt_c.setEnabled(false);
         }
+        
+        this.txt_x0.setText("");
     }//GEN-LAST:event_combo_generadorActionPerformed
 
     private void txt_kActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_kActionPerformed
@@ -403,55 +411,86 @@ public class EjercicioA extends javax.swing.JFrame {
 
     private void btn_calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calcularActionPerformed
         // TODO add your handling code here:
-        if (verificarCampos()){
-            generador = null;
-            generador = crearGenerador();
+        if (validarCampos()){
             
-           try {
-            int cantidad = Integer.parseInt(this.txt_cant.getText());
-            if (!this.txt_a.getText().isEmpty()){
-                generador.setA(Integer.parseInt(this.txt_a.getText()));
-            }
-            else {
-                 generador.setK(Integer.parseInt(this.txt_k.getText()));
-            }
-            
-            
-            if (!this.txt_m.getText().isEmpty()){
-                generador.setM(Integer.parseInt(this.txt_m.getText()));
-            }
-            else {
-                 generador.setG(Integer.parseInt(this.txt_g.getText()));
-            }
-          
-            if (!this.txt_c.getText().isEmpty()){
-                generador.setC(Integer.parseInt(this.txt_c.getText()));
-            }
-            generador.setX0(Integer.parseInt(this.txt_x0.getText()));
-           
-           
-            limpiarTabla();
-            DefaultTableModel tm = (DefaultTableModel) this.table_numeros.getModel();
+            try {
+                
+                generador = null;
+                generador = crearGenerador();
 
-            for (int i = 0; i <cantidad; i++){
-                double rnd = generador.calcularSiguiente();
-                int xi = generador.getXi();
-                tm.addRow(new Object[]{i,xi,rnd});
-            }
-            
-            this.btn_calcular.setEnabled(false);
-            this.btn_siguiente.setEnabled(true);
-            
-            }
-            catch(Exception e){
-                JOptionPane.showMessageDialog(this, e.getMessage());
-            }
-            
-            
-           
-            
+                boolean flag = true;
+                int cantidad = Integer.parseInt(this.txt_cant.getText());
+                if (!this.txt_a.getText().isEmpty()){
+                    int cant = Integer.parseInt(this.txt_a.getText());
+                    if (cant > 0) generador.setA(cant); 
+                    else flag = false;
+                    
+                }
+                else {
+                    int k = Integer.parseInt(this.txt_k.getText());
+                    if(k > 0){
+                        generador.setK(k);
+                    }
+                    else flag = false;
+                }
+
+
+                if (!this.txt_m.getText().isEmpty()){
+                    int m = Integer.parseInt(this.txt_m.getText());
+                    if (m > 0){
+                        generador.setM(m);
+                    }
+                    else flag = false;
+                }
+                else {
+                    int g = Integer.parseInt(this.txt_g.getText());
+                    if (g > 0){
+                        generador.setG(g);
+                    }
+                    else flag = false;
+                }
+
+                if (!this.txt_c.getText().isEmpty()){
+                    int c = Integer.parseInt(this.txt_c.getText());
+                    if (c > 0){
+                        generador.setC(c);
+                    }
+                    else flag = false;
+                }
+                int x0 = Integer.parseInt(this.txt_x0.getText());
+                if (x0 > 0){
+                    generador.setX0(x0);
+                }
+                else flag = false;
+                
+                if (flag){
+                
+                    limpiarTabla();
+                    DefaultTableModel tm = (DefaultTableModel) this.table_numeros.getModel();
+
+                    for (int i = 0; i <cantidad; i++){
+                        double rnd = generador.calcularSiguiente();
+                        int xi = generador.getXi();
+                        tm.addRow(new Object[]{i,xi,rnd});
+                    }
+
+                    this.btn_calcular.setEnabled(false);
+                    this.btn_siguiente.setEnabled(true);
+                }
+                else {
+                    JOptionPane.showMessageDialog(this, "Verifique que los números sean positivos");
+                }
+                
+                }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(this, e.getMessage());
+                }
         }
         
+        else {
+            JOptionPane.showMessageDialog(this, "Hay campos vacíos. Verifique");
+        }
+
     }//GEN-LAST:event_btn_calcularActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -484,6 +523,17 @@ public class EjercicioA extends javax.swing.JFrame {
          jscroll.setAutoscrolls(true);
          */
     }//GEN-LAST:event_btn_siguienteActionPerformed
+
+    private void txt_x0FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_x0FocusLost
+        // TODO add your handling code here:
+        if (!this.txt_x0.getText().isEmpty() && 
+                this.combo_generador.getSelectedIndex() == 1 
+                && Integer.parseInt(this.txt_x0.getText()) % 2 == 0 ){
+            JOptionPane.showMessageDialog(this, "Es obligatorio que la semilla sea impar en el método congruencial multiplicativo");
+            this.txt_x0.setText("");
+            this.txt_x0.setFocusable(true);
+        }
+    }//GEN-LAST:event_txt_x0FocusLost
 
     private void limpiarTabla(){
         DefaultTableModel modelo = (DefaultTableModel)this.table_numeros.getModel();
@@ -519,10 +569,11 @@ public class EjercicioA extends javax.swing.JFrame {
     }
     
     
-    private boolean verificarCampos(){
+    private boolean validarCampos(){
         if (this.txt_a.getText().isEmpty() && this.txt_k.getText().isEmpty()){
             return false;
         }
+        
         
         if (this.txt_m.getText().isEmpty() && this.txt_g.getText().isEmpty()){
             return false;
@@ -542,8 +593,12 @@ public class EjercicioA extends javax.swing.JFrame {
         }
         
         
+        
+        
         return true;
     }
+    
+    
     /**
      * @param args the command line arguments
      */
