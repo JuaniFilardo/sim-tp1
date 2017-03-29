@@ -10,7 +10,33 @@ function graficar () {
         } catch(e) {
             alert("Formato incorrecto. Ingrese los números separados por comas.");
         }
-        showBarChart(datos);
+		// grafica el primer gráfico, con los valores pasamos por parámetro
+        showBarChart(datos,$("#canvasBarChart"));
+
+		// vector del mismo tamaño que el de datos, pero contendrá
+		// en cada uno de sus casilleros el mismo número, resultante de:
+		// sum(frecuencias)/cantidad de intervalos
+		// ejemplo: si hay 1000 números en 10 intervalos, cada casillero
+		// tendrá el número 10
+
+		var datosReferencia = datos;
+		
+		// contador, almacenará la sumatoria de las frecuencias
+		var cont = 0;
+		
+		// hago la sumatoria
+		for (var i = 0; i < datos.length; i++) {
+			cont += datos[i];		
+		}
+		// el valor ideal sería
+		var valorIdeal = cont/datos.length;
+		// seteo el valor en cada casilla
+		for (var j = 0; j < datos.length; j++) {
+			datosReferencia[j] = valorIdeal;
+		}
+
+		// grafica el segundo gráfico, que tiene los valores ideales
+		showBarChart(datosReferencia,$("#canvasBarChartReferencia"));
     }
     return undefined;
 }

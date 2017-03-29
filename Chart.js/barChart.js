@@ -34,7 +34,7 @@ var datosChart = {
 /**
 * Muestra el gráfico de barras
 */
-var showBarChart = function (datos) {
+var showBarChart = function (datos,canvas) {
 
     if(chart!=null){
         chart.destroy();
@@ -43,10 +43,12 @@ var showBarChart = function (datos) {
     setLimites(datos);
     dataBar.datasets[0].backgroundColor  = getBackgroundColors(datos.length);
     dataBar.datasets[0].borderColor  = getBorderColors(dataBar.datasets[0].backgroundColor);
-    var chart = new Chart($("#canvasBarChart"), datosChart);
+    var chart = new Chart(canvas, datosChart);
 };
 
 
+// recibe el vector, calcula el largo y en base a eso setea los limites
+// por alguna razón no anda si le paso el largo directamente
 var setLimites = function (datos) {
     var n = datos.length;
     var limiteFijo = 1/n;
