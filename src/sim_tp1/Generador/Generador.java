@@ -89,8 +89,5 @@ public abstract class Generador {
      * @return entero positivo
      */
     public abstract int calcularXi();
-    
-    
-    
-    
+       
 }

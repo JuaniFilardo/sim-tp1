@@ -5,7 +5,9 @@
  */
 package sim_tp1;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import sim_tp1.Generador.Generador;
 import sim_tp1.Generador.GeneradorCongruencialLineal;
 
@@ -16,6 +18,7 @@ import sim_tp1.Generador.GeneradorCongruencialLineal;
 public class EjercicioC extends javax.swing.JFrame {
     
     GeneradorCongruencialLineal generador;
+    ArrayList<Integer> frecuencias = new <Integer>ArrayList();
     /**
      * Creates new form EjercicioC
      */
@@ -23,6 +26,10 @@ public class EjercicioC extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(2);
+        this.btn_chicuadrado.setEnabled(false);
+        //this.txt_chiesp.setEditable(false);
+        //this.txt_chiobs.setEditable(false);
+        //this.txt_conclusion.setEditable(false);
     }
 
     /**
@@ -34,6 +41,7 @@ public class EjercicioC extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jProgressBar1 = new javax.swing.JProgressBar();
         jPanel1 = new javax.swing.JPanel();
         btn_generar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -56,6 +64,16 @@ public class EjercicioC extends javax.swing.JFrame {
         lbl_intervalos = new javax.swing.JLabel();
         txt_intervalos = new javax.swing.JTextField();
         btn_nuevo = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabla_chicuad = new javax.swing.JTable();
+        btn_chicuadrado = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        txt_chiesp = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txt_chiobs = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        txt_conclusion = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -236,6 +254,40 @@ public class EjercicioC extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Prueba de Chi Cuadrado");
+
+        tabla_chicuad.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Int", "F Obs", "F Esp", "(F Obs - F Esp) ^2"
+            }
+        ));
+        jScrollPane2.setViewportView(tabla_chicuad);
+
+        btn_chicuadrado.setText("Generar Chi Cuadrado");
+        btn_chicuadrado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_chicuadradoActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Chi Cuad Esp");
+
+        jLabel9.setText("Chi Cuad Obs");
+
+        jLabel10.setText("Conclusión");
+
+        txt_conclusion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_conclusionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -243,136 +295,93 @@ public class EjercicioC extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(btn_nuevo)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(btn_generar)
+                        .addComponent(jLabel1)
+                        .addComponent(btn_chicuadrado)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel8)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txt_chiesp, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(45, 45, 45)
+                            .addComponent(jLabel9)
+                            .addGap(18, 18, 18)
+                            .addComponent(txt_chiobs, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel10)
+                            .addGap(18, 18, 18)
+                            .addComponent(txt_conclusion))))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_generar)
-                .addGap(32, 32, 32))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_generar)
                 .addGap(1, 1, 1)
+                .addComponent(btn_generar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_nuevo))
+                .addGap(11, 11, 11)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_chicuadrado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txt_chiesp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(txt_chiobs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(txt_conclusion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btn_nuevo)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 11, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevoActionPerformed
+        // TODO add your handling code here:
+        limpiarCampos();
+        limpiarTabla();
+        this.txt_a.setEnabled(true);
+        this.txt_m.setEnabled(true);
+        this.txt_k.setEnabled(true);
+        this.txt_g.setEnabled(true);
+
+    }//GEN-LAST:event_btn_nuevoActionPerformed
+
     private void txt_cantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cantidadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_cantidadActionPerformed
 
-    private void btn_generarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_generarActionPerformed
+    private void txt_aKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_aKeyTyped
         // TODO add your handling code here:
-
-        if (verificarCampos()){
-            System.out.println("Campos verificados.");
-
-            // método temporal para mostrar los números
-            double [] n = generarNumeros();
-            //mostrarNumeros(n);
-            //System.out.println(imprimirArreglo(contarFrecuenciaEnIntervalos(n,Integer.parseInt(this.txt_intervalos.getText()))));
-            String s = imprimirArreglo(contarFrecuenciaEnIntervalos(n,Integer.parseInt(this.txt_intervalos.getText())));
-            this.display.setText("Cantidad de números en cada intervalo: \n" + s);
-            
-            //limpiarCampos();
-        } else {
-            System.out.println("Ocurrió un error");
-        }
-
-    }//GEN-LAST:event_btn_generarActionPerformed
-
-    private void txt_mKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_mKeyPressed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_txt_mKeyPressed
-
-    private void txt_mKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_mKeyReleased
-        // TODO add your handling code here:
-        if (this.txt_m.getText().isEmpty()){
-            this.txt_g.setEnabled(true);
-        }
-        else {
-            this.txt_g.setEnabled(false);
-        }
-    }//GEN-LAST:event_txt_mKeyReleased
-
-    private void txt_kActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_kActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_kActionPerformed
-
-    private void txt_kKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_kKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_kKeyPressed
-
-    private void txt_kKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_kKeyReleased
-        // TODO add your handling code here:
-        if (this.txt_k.getText().isEmpty()){
-            this.txt_a.setEnabled(true);
-        }
-        else {
-            this.txt_a.setEnabled(false);
-        }
-    }//GEN-LAST:event_txt_kKeyReleased
-
-    private void txt_gActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_gActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_gActionPerformed
-
-    private void txt_gKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_gKeyPressed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_txt_gKeyPressed
-
-    private void txt_gKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_gKeyReleased
-        // TODO add your handling code here:
-        if (this.txt_g.getText().isEmpty()){
-            this.txt_m.setEnabled(true);
-        }
-        else {
-            this.txt_m.setEnabled(false);
-        }
-    }//GEN-LAST:event_txt_gKeyReleased
-
-    private void txt_aActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_aActionPerformed
-
-    }//GEN-LAST:event_txt_aActionPerformed
-
-    private void txt_aPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txt_aPropertyChange
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_txt_aPropertyChange
-
-    private void txt_aKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_aKeyPressed
-
-    }//GEN-LAST:event_txt_aKeyPressed
+    }//GEN-LAST:event_txt_aKeyTyped
 
     private void txt_aKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_aKeyReleased
         // TODO add your handling code here:
@@ -384,15 +393,113 @@ public class EjercicioC extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_aKeyReleased
 
-    private void txt_aKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_aKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_aKeyTyped
+    private void txt_aKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_aKeyPressed
 
-    private void btn_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevoActionPerformed
-        // TODO add your handling code here:
-        limpiarCampos();
-    }//GEN-LAST:event_btn_nuevoActionPerformed
+    }//GEN-LAST:event_txt_aKeyPressed
 
+    private void txt_aPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txt_aPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_aPropertyChange
+
+    private void txt_aActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_aActionPerformed
+
+    }//GEN-LAST:event_txt_aActionPerformed
+
+    private void txt_gKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_gKeyReleased
+        // TODO add your handling code here:
+        if (this.txt_g.getText().isEmpty()){
+            this.txt_m.setEnabled(true);
+        }
+        else {
+            this.txt_m.setEnabled(false);
+        }
+    }//GEN-LAST:event_txt_gKeyReleased
+
+    private void txt_gKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_gKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_gKeyPressed
+
+    private void txt_gActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_gActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_gActionPerformed
+
+    private void txt_kKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_kKeyReleased
+        // TODO add your handling code here:
+        if (this.txt_k.getText().isEmpty()){
+            this.txt_a.setEnabled(true);
+        }
+        else {
+            this.txt_a.setEnabled(false);
+        }
+    }//GEN-LAST:event_txt_kKeyReleased
+
+    private void txt_kKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_kKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_kKeyPressed
+
+    private void txt_kActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_kActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_kActionPerformed
+
+    private void txt_mKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_mKeyReleased
+        // TODO add your handling code here:
+        if (this.txt_m.getText().isEmpty()){
+            this.txt_g.setEnabled(true);
+        }
+        else {
+            this.txt_g.setEnabled(false);
+        }
+    }//GEN-LAST:event_txt_mKeyReleased
+
+    private void txt_mKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_mKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_mKeyPressed
+
+    private void btn_generarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_generarActionPerformed
+        // TODO add your handling code here:
+        frecuencias.clear();
+        
+        if (verificarCampos()){
+            System.out.println("Campos verificados.");
+            
+            int intervalos = Integer.parseInt(txt_intervalos.getText());
+            
+            // método temporal para mostrar los números
+            double [] n = generarNumeros();
+            //Vector que solo sirve para llenar el arraylist de frecuencias
+            int[] vecCantidades = new int[intervalos];
+            
+            String s = imprimirArreglo(contarFrecuenciaEnIntervalos(n,intervalos));
+            this.display.setText("Cantidad de números en cada intervalo: \n" + s);
+            
+            //Lleno el arraylist de frecuencias
+            vecCantidades = contarFrecuenciaEnIntervalos(n,intervalos);
+            for (int frec : vecCantidades) 
+            {
+                frecuencias.add(frec);
+            }
+
+            //VALIDACION PARA PODER HACER CHI CUADRADO
+            //int cantint = Integer.parseInt(txt_cantidad.getText());
+            //if(cantint == 5 || cantint == 10 || cantint ==20)
+            //{
+                this.btn_chicuadrado.setEnabled(true);
+            //}
+                
+        } else {
+            System.out.println("Hay campos vacíos");
+        }
+    }//GEN-LAST:event_btn_generarActionPerformed
+
+    private void txt_conclusionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_conclusionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_conclusionActionPerformed
+
+    private void btn_chicuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_chicuadradoActionPerformed
+        // TODO add your handling code here:
+        this.generarChiCuadrado(frecuencias);
+    }//GEN-LAST:event_btn_chicuadradoActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -428,6 +535,15 @@ public class EjercicioC extends javax.swing.JFrame {
         });
     }
     
+     private void limpiarTabla(){
+        DefaultTableModel modelo = (DefaultTableModel)this.tabla_chicuad.getModel();
+            int length = modelo.getRowCount();
+            for (int i = 0; i < length; i++) {
+            modelo.removeRow(0);
+            
+       } 
+    }
+    
     private void limpiarCampos()
     {
         this.txt_a.setText("");
@@ -443,6 +559,10 @@ public class EjercicioC extends javax.swing.JFrame {
         this.txt_m.setEnabled(true);
         this.txt_a.setEnabled(true);
         this.txt_g.setEnabled(true);
+        this.btn_chicuadrado.setEnabled(false);
+        this.txt_chiesp.setText("");
+        this.txt_chiobs.setText("");
+        this.txt_conclusion.setText("");
         
     }
     
@@ -488,6 +608,8 @@ public class EjercicioC extends javax.swing.JFrame {
         
         generador = new GeneradorCongruencialLineal();
         
+        boolean flag = true;
+        
         double [] num = null;
         if(verificarCampos())
         {
@@ -496,32 +618,64 @@ public class EjercicioC extends javax.swing.JFrame {
         num = new double[N];
         try {
 
-            if (!this.txt_a.getText().isEmpty()){
-                generador.setA(Integer.parseInt(this.txt_a.getText()));
+            if (!this.txt_a.getText().isEmpty())
+            {
+                int cant = Integer.parseInt(this.txt_a.getText());
+                    if (cant > 0) generador.setA(cant); 
+                    else flag = false;
             }
             else {
-                 generador.setK(Integer.parseInt(this.txt_k.getText()));
+                 int k = Integer.parseInt(this.txt_k.getText());
+                    if(k > 0){
+                        generador.setK(k);
+                    }
+                    else flag = false;
             }
             
             
-            if (!this.txt_m.getText().isEmpty()){
-                generador.setM(Integer.parseInt(this.txt_m.getText()));
+            if (!this.txt_m.getText().isEmpty())
+            {
+                int m = Integer.parseInt(this.txt_m.getText());
+                    if (m > 0){
+                        generador.setM(m);
+                    }
+                    else flag = false;
             }
             else {
-                 generador.setG(Integer.parseInt(this.txt_g.getText()));
+                 int g = Integer.parseInt(this.txt_g.getText());
+                    if (g > 0){
+                        generador.setG(g);
+                    }
+                    else flag = false;
             }
           
-            if (!this.txt_c.getText().isEmpty()){
-                generador.setC(Integer.parseInt(this.txt_c.getText()));
+            if (!this.txt_c.getText().isEmpty())
+            {
+                int c = Integer.parseInt(this.txt_c.getText());
+                    if (c > 0){
+                        generador.setC(c);
+                    }
+                    else flag = false;
             }
-            generador.setX0(Integer.parseInt(this.txt_x0.getText()));
+            
+            int x0 = Integer.parseInt(this.txt_x0.getText());
+                if (x0 > 0){
+                    generador.setX0(x0);
+                }
+                else flag = false;
         
+            if (flag)
+            {
             
+                for (int i = 0; i < num.length; i++) {
+                    num[i] = generador.calcularSiguiente();
+                }
             
-            for (int i = 0; i < num.length; i++) {
-                num[i] = generador.calcularSiguiente();
             }
-            
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Verifique que los números sean positivos");
+            }
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -529,6 +683,69 @@ public class EjercicioC extends javax.swing.JFrame {
         
         }
         return num;
+    }
+    
+    /**
+     * Genera la distribución Chi Cuadrado, basándose en los intervalos obtenidos
+     * SE TOMARÁ UN 95% DE NIVEL DE CONFIANZA
+     * @param rnd 
+     */
+    private void generarChiCuadrado(ArrayList<Integer> frecuencias)
+    {
+        if (verificarCampos())
+        {   
+            int k = Integer.parseInt(this.txt_intervalos.getText());
+            int M = Integer.parseInt(this.txt_cantidad.getText());
+            double fesp = (double)M/k;
+            int gl = k - 1;
+            double sumatoria = 0;
+            DefaultTableModel tm = (DefaultTableModel) this.tabla_chicuad.getModel();
+            double chicuad = 0;//El valor esperado para 95% de confianza y los GL correspondientes
+            double resultado = 0; // El chi cuadrado resultante observado
+            String conclusion = "Se rechaza la H0";
+            
+            switch(gl) // Solo tomamos los GL 4, 9 y 19 (Cuando k vale 5, 10 o 20)
+            {
+                case 4: chicuad = 9.488;
+                        break;
+                case 9: chicuad = 16.919;
+                        break;
+                case 19: chicuad = 30.144;
+                        break;
+                default: chicuad = 0;
+            }
+            
+            String chiesp = Double.toString(chicuad);
+            this.txt_chiesp.setText(chiesp);
+            
+            limpiarTabla();
+            int posicion = 0;
+            
+            for (Integer frec : frecuencias)  
+            {   
+                posicion++;
+                int fobs = frec;
+                double calculo = Math.pow(fobs - fesp, 2);
+                sumatoria += calculo;
+                tm.addRow(new Object[]{posicion,fobs,fesp,calculo});
+            }
+            
+            resultado = sumatoria/fesp;
+            String res = Double.toString(resultado);
+            this.txt_chiobs.setText(res);
+            
+            if(resultado < chicuad)
+            {
+                conclusion = "No se rechaza la H0";
+            }
+            
+            this.txt_conclusion.setText(conclusion);
+            
+        }
+        else 
+        {
+            System.out.println("Ocurrió un error");
+        }
     }
 
     /**
@@ -611,23 +828,34 @@ public class EjercicioC extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_chicuadrado;
     private javax.swing.JButton btn_generar;
     private javax.swing.JButton btn_nuevo;
     private javax.swing.JTextArea display;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl_cantidad;
     private javax.swing.JLabel lbl_intervalos;
+    private javax.swing.JTable tabla_chicuad;
     private javax.swing.JTextField txt_a;
     private javax.swing.JTextField txt_c;
     private javax.swing.JTextField txt_cantidad;
+    private javax.swing.JTextField txt_chiesp;
+    private javax.swing.JTextField txt_chiobs;
+    private javax.swing.JTextField txt_conclusion;
     private javax.swing.JTextField txt_g;
     private javax.swing.JTextField txt_intervalos;
     private javax.swing.JTextField txt_k;

@@ -43,7 +43,7 @@ public class EjercicioA extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        combo_generador = new javax.swing.JComboBox<>();
+        combo_generador = new javax.swing.JComboBox<String>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -70,7 +70,7 @@ public class EjercicioA extends javax.swing.JFrame {
 
         jLabel1.setText("Generador: ");
 
-        combo_generador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Congruencial Mixto o Lineal", "Congruencial Multiplicativo" }));
+        combo_generador.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Congruencial Mixto o Lineal", "Congruencial Multiplicativo" }));
         combo_generador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combo_generadorActionPerformed(evt);
